@@ -2,6 +2,10 @@
   @return map-get($breakpoints, $size);
 }
 
+@function container($size) {
+  @return map-get($containers, $size);
+}
+
 @mixin extra-small-device {
   @media screen and (min-width: breakpoint("extra-small")) {
     @content;
