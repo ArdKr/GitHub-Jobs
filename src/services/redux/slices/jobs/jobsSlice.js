@@ -27,4 +27,8 @@ const jobsSlice = createSlice({
   },
 });
 
+export const { selectAll: selectAllJobs } = jobsAdapter.getSelectors(
+  (state) => state.jobs
+);
+
 export default jobsSlice.reducer;
