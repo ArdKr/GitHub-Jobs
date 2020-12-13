@@ -1,0 +1,33 @@
+@function breakpoint($size) {
+  @return map-get($breakpoints, $size);
+}
+
+@mixin extra-small-device {
+  @media screen and (min-width: breakpoint("extra-small")) {
+    @content;
+  }
+}
+
+@mixin small-device {
+  @media screen and (min-width: breakpoint("small")) {
+    @content;
+  }
+}
+
+@mixin medium-device {
+  @media screen and (min-width: breakpoint("medium")) {
+    @content;
+  }
+}
+
+@mixin large-device {
+  @media screen and (min-width: breakpoint("large")) {
+    @content;
+  }
+}
+
+@mixin extra-large-device {
+  @media screen and (min-width: breakpoint("extra-large")) {
+    @content;
+  }
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.scss";
 
 const JobCard = ({
   companyLogo,
@@ -9,21 +10,34 @@ const JobCard = ({
   created_at,
 }) => {
   return (
-    <div>
-      <div className="logo">
-        <img src={companyLogo} alt="Company logo" height="90px" width="90px" />
-      </div>
+    <div className="wrapper">
       <div className="position-info">
-        <h5>{company}</h5>
-        <h2>{title}</h2>
+        <div className="logo">
+          <img
+            src={companyLogo}
+            alt="Company logo"
+            height="90px"
+            width="90px"
+          />
+        </div>
+        <div className="position-details">
+          <h5>{company}</h5>
+          <h2>{title}</h2>
 
-        <button>{type}</button>
+          <button>{type}</button>
+        </div>
       </div>
 
       <div className="application-info">
-        <div className="location">{location}</div>
+        <div className="location">
+          <i class="fas fa-globe-europe"></i>
+          {location}
+        </div>
 
-        <div className="created">{created_at}</div>
+        <div className="created">
+          <i class="far fa-clock"></i>
+          {created_at}
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,87 @@
+@import "../imports";
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  background: $white;
+  padding: 12px;
+  box-shadow: $shadow;
+  flex-direction: column;
+  justify-content: left;
+
+  @include medium-device {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .position-info {
+    display: flex;
+    margin-bottom: 25px;
+
+    @include medium-device {
+      margin-bottom: 0;
+    }
+
+    .logo {
+      border-radius: $border-radius;
+      overflow: hidden;
+      height: 90px;
+      width: 90px;
+      background: $gray-light;
+    }
+
+    .position-details {
+      padding: 0 16px;
+      h5 {
+        font-size: $small-font-size;
+        font-weight: $bold-weight;
+        color: $dark-blue;
+      }
+
+      h2 {
+        font-size: $large-font-size;
+        color: $dark-blue;
+        font-weight: $regular-weight;
+        margin-top: 8px;
+      }
+
+      button {
+        border: $default-border;
+        padding: 6px 8px;
+        background: transparent;
+        color: $dark-blue;
+        font-weight: $bold-weight;
+        font-size: $small-font-size;
+        letter-spacing: 1.2;
+        border-radius: $border-radius;
+        cursor: pointer;
+        margin-top: 18px;
+        transition: all 0.1s ease-in-out;
+
+        &:hover {
+          background: $dark-blue;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  .application-info {
+    color: $gray-light;
+    font-size: $small-font-size;
+    display: flex;
+    justify-content: space-between;
+    width: 190px;
+    height: 100%;
+    margin-left: 106px;
+
+    @include medium-device {
+      align-self: end;
+      margin-left: 0;
+    }
+
+    i {
+      margin-right: 8.5px;
+    }
+  }
+}
