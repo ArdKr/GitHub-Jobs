@@ -8,10 +8,12 @@
   box-shadow: $shadow;
   flex-direction: column;
   justify-content: left;
+  margin-top: 25px;
 
   @include medium-device {
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 32px;
   }
 
   .position-info {

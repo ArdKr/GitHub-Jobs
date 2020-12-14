@@ -30,12 +30,12 @@ const JobCard = ({
 
       <div className="application-info">
         <div className="location">
-          <i class="fas fa-globe-europe"></i>
+          <i className="fas fa-globe-europe"></i>
           {location}
         </div>
 
         <div className="created">
-          <i class="far fa-clock"></i>
+          <i className="far fa-clock"></i>
           {created_at}
         </div>
       </div>
