@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "./JobList.scss";
+import "./style.scss";
 
 import JobCard from "../JobCard/JobCard";
 
 import { useSelector } from "react-redux";
 import { selectAllJobs } from "../../services/redux/slices/jobs/jobsSlice";
-import { current } from "@reduxjs/toolkit";
 
 const JobList = () => {
   const jobsPerPage = 5;
@@ -39,7 +38,7 @@ const JobList = () => {
   }, [currentPage, jobs]);
 
   return (
-    <div>
+    <div className="joblist-wrapper">
       <div>
         {paginatedJobs.map((job) => {
           if (job) {
@@ -57,7 +56,7 @@ const JobList = () => {
         })}
       </div>
 
-      <div>
+      <div className="pagination-buttons">
         {Array.from({ length: pagesCount }, (v, i) => i).map((i) => {
           return (
             <button
@@ -65,6 +64,7 @@ const JobList = () => {
                 setCurrentPage(e.target.textContent);
               }}
               key={i}
+              className={currentPage === String(i +1) && "active"}
             >
               {i + 1}
             </button>

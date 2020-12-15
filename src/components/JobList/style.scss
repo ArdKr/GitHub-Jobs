@@ -1,0 +1,28 @@
+@import "../imports";
+
+.joblist-wrapper {
+  .pagination-buttons {
+    text-align: right;
+    margin-top: 32px;
+
+    button {
+      font-size: $small-font-size;
+      background-color: transparent;
+      border: 1px solid #b7bcce;
+      border-radius: $border-radius;
+      line-height: 36px;
+      padding: 0 14px;
+      margin-left: 12px;
+      color: $gray-light;
+      transition: all 0.1s;
+      cursor: pointer;
+
+      &:hover,
+      &.active {
+        background: $primary;
+        border: 1px solid $primary;
+        color: $white;
+      }
+    }
+  }
+}

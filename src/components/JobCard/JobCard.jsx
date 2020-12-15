@@ -9,16 +9,15 @@ const JobCard = ({
   location,
   created_at,
 }) => {
+  created_at = created_at.split(" ");
+
+  delete created_at[3];
+  delete created_at[4];
   return (
     <div className="wrapper">
       <div className="position-info">
         <div className="logo">
-          <img
-            src={companyLogo}
-            alt="Company logo"
-            height="90px"
-            width="90px"
-          />
+          <img src={companyLogo} alt="not found" height="90px" width="90px" />
         </div>
         <div className="position-details">
           <h5>{company}</h5>
@@ -36,7 +35,7 @@ const JobCard = ({
 
         <div className="created">
           <i className="far fa-clock"></i>
-          {created_at}
+          {created_at.join(" ")}
         </div>
       </div>
     </div>

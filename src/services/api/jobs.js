@@ -2,7 +2,10 @@ import axios from "axios";
 
 const client = axios.create({
   // Using https://cors-anywhere.herokuapp.com/ because of CORS
-  baseURL: "https://cors-anywhere.herokuapp.com/jobs.github.com/positions.json", //"https://jobs.github.com/positions.json", 
+  baseURL:
+    "https://thingproxy.freeboard.io/fetch/https://jobs.github.com/positions.json",
+  //"https://cors-anywhere.herokuapp.com/jobs.github.com/positions.json",
+  //"https://jobs.github.com/positions.json",
   headers: {
     "Content-Type": "application/json",
   },
