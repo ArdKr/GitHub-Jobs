@@ -5,6 +5,12 @@
     text-align: right;
     margin-top: 32px;
 
+    i {
+      font-size: $large-font-size;
+      color: $gray-light;
+      padding: 0 14px;
+    }
+
     button {
       font-size: $small-font-size;
       background-color: transparent;

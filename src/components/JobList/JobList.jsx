@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./style.scss";
 
 import JobCard from "../JobCard/JobCard";
+import Pagination from "./Pagination";
 
 import { useSelector } from "react-redux";
 import { selectAllJobs } from "../../services/redux/slices/jobs/jobsSlice";
 
 const JobList = () => {
   const jobsPerPage = 5;
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState("1");
   const [pagesCount, setPagesCount] = useState(0);
   const [jobsCount, setJobsCount] = useState(0);
   const [jobs, setJobs] = useState([]);
@@ -16,6 +17,7 @@ const JobList = () => {
 
   const jobsSelector = useSelector(selectAllJobs);
 
+  // Load jobs into state when component mounts.
   useEffect(() => {
     setJobs(jobsSelector);
 
@@ -24,6 +26,7 @@ const JobList = () => {
     setPagesCount(Math.floor(jobsSelector.length / jobsPerPage));
   }, [jobsSelector]);
 
+  //
   useEffect(() => {
     const newJobList = [];
 
@@ -35,7 +38,12 @@ const JobList = () => {
     }
 
     setPaginatedJobs(newJobList);
+    setPagesCount(Math.floor(jobs.length / jobsPerPage));
+    setJobsCount(jobs.length);
   }, [currentPage, jobs]);
+
+  // Buttons to show
+  const buttonsArray = Array.from({ length: pagesCount }, (v, i) => i);
 
   return (
     <div className="joblist-wrapper">
@@ -50,27 +58,18 @@ const JobList = () => {
                 type={job.type}
                 location={job.location}
                 created_at={job.created_at}
+                key={job.id}
               />
             );
           }
         })}
       </div>
 
-      <div className="pagination-buttons">
-        {Array.from({ length: pagesCount }, (v, i) => i).map((i) => {
-          return (
-            <button
-              onClick={(e) => {
-                setCurrentPage(e.target.textContent);
-              }}
-              key={i}
-              className={currentPage === String(i +1) && "active"}
-            >
-              {i + 1}
-            </button>
-          );
-        })}
-      </div>
+      <Pagination
+        pagesCount={pagesCount}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
     </div>
   );
 };
