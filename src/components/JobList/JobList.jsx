@@ -3,6 +3,8 @@ import "./style.scss";
 
 import JobCard from "../JobCard/JobCard";
 import Pagination from "./Pagination";
+import Loading from "./Loading";
+import Rejected from "./Rejected";
 
 import { useSelector } from "react-redux";
 import { selectAllJobs } from "../../services/redux/slices/jobs/jobsSlice";
@@ -15,6 +17,7 @@ const JobList = () => {
   const [paginatedJobs, setPaginatedJobs] = useState([]);
 
   const jobsSelector = useSelector(selectAllJobs);
+  const requestStatus = useSelector((state) => state.jobs.status);
 
   // Load jobs into state when component mounts.
   useEffect(() => {
@@ -23,7 +26,7 @@ const JobList = () => {
     setPagesCount(Math.floor(jobsSelector.length / jobsPerPage));
   }, [jobsSelector]);
 
-  //
+  // Handle what jobs are displayed
   useEffect(() => {
     const newJobList = [];
 
@@ -37,6 +40,14 @@ const JobList = () => {
     setPaginatedJobs(newJobList);
     setPagesCount(Math.floor(jobs.length / jobsPerPage));
   }, [currentPage, jobs]);
+
+  if (requestStatus === "loading") {
+    return <Loading />;
+  }
+
+  if (requestStatus === "rejected") {
+    return <Rejected />;
+  }
 
   return (
     <div className="joblist-wrapper">

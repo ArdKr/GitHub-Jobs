@@ -5,7 +5,7 @@ const client = axios.create({
   baseURL:
     "https://thingproxy.freeboard.io/fetch/https://jobs.github.com/positions.json",
   //"https://cors-anywhere.herokuapp.com/jobs.github.com/positions.json",
-  //"https://jobs.github.com/positions.json",
+  // "https://jobs.github.com/positions.json",
   headers: {
     "Content-Type": "application/json",
   },
@@ -32,10 +32,13 @@ const request = (url = "", params = {}) => {
 export const getJobs = async (url = "", params = {}) => {
   const requestPromise = await request(url, params)
     .then((response) => {
-      return response.data;
+      if (response.statusText === "OK") {
+        return response.data;
+      }
+      throw new Error(response.statusText);
     })
     .catch((e) => {
-      console.log(`Error: ${e}`);
+      return Promise.reject(e.message);
     });
 
   return requestPromise;

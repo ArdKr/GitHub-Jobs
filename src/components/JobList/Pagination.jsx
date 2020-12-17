@@ -1,11 +1,11 @@
 import React from "react";
 
 const Pagination = ({ pagesCount, setCurrentPage, currentPage }) => {
+  currentPage = Number(currentPage);
+
   // Return page numbers that have to be displayed
   const buttons = () => {
     const buttonArray = [];
-
-    currentPage = Number(currentPage);
 
     // Push the current page into the array
     buttonArray.push(currentPage);
@@ -43,12 +43,14 @@ const Pagination = ({ pagesCount, setCurrentPage, currentPage }) => {
         }}
         disabled={currentPage === 1 && "disabled"}
       >
-        <i class="fas fa-chevron-left"></i>
+        <i className="fas fa-chevron-left"></i>
       </button>
 
       {buttons().map((pageNumber) => {
         if (pageNumber === "dots") {
-          return <i key={pageNumber} class="fas fa-ellipsis-h" id="dots"></i>;
+          return (
+            <i key={pageNumber} className="fas fa-ellipsis-h" id="dots"></i>
+          );
         }
 
         return (
@@ -70,7 +72,7 @@ const Pagination = ({ pagesCount, setCurrentPage, currentPage }) => {
         }}
         disabled={currentPage === pagesCount && "disabled"}
       >
-        <i class="fas fa-chevron-right"></i>
+        <i className="fas fa-chevron-right"></i>
       </button>
     </div>
   );

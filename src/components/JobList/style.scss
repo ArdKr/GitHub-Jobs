@@ -1,5 +1,27 @@
 @import "../imports";
 
+.rejected {
+  background: $primary;
+  color: $white;
+  margin: 0 auto;
+  padding: 16px;
+  margin: 100px;
+  min-width: 350px;
+  h3 {
+    margin-top: 35px;
+
+    a {
+      color: white;
+    }
+  }
+}
+
+.loading {
+  width: 100%;
+  text-align: center;
+  margin-top: 100px;
+}
+
 .joblist-wrapper {
   .pagination-buttons {
     text-align: right;

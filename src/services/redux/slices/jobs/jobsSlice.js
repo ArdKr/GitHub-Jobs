@@ -7,7 +7,10 @@ import { getJobs } from "../../../api/jobs";
 
 const jobsAdapter = createEntityAdapter();
 
-const initialState = jobsAdapter.getInitialState();
+const initialState = jobsAdapter.getInitialState({
+  status: "",
+  error: null,
+});
 
 export const fetchJobs = createAsyncThunk("jobs/fetchJobs", async () => {
   const response = await getJobs();
@@ -23,7 +26,17 @@ const jobsSlice = createSlice({
     //
   },
   extraReducers: {
-    [fetchJobs.fulfilled]: jobsAdapter.setAll,
+    [fetchJobs.fulfilled]: (state, action) => {
+      jobsAdapter.upsertMany(state, action.payload);
+      state.status = "finished";
+    },
+    [fetchJobs.pending]: (state) => {
+      state.status = "loading";
+    },
+    [fetchJobs.rejected]: (state, action) => {
+      state.status = "rejected";
+      state.error = action.error.message;
+    },
   },
 });
 
