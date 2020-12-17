@@ -11,7 +11,6 @@ const JobList = () => {
   const jobsPerPage = 5;
   const [currentPage, setCurrentPage] = useState("1");
   const [pagesCount, setPagesCount] = useState(0);
-  const [jobsCount, setJobsCount] = useState(0);
   const [jobs, setJobs] = useState([]);
   const [paginatedJobs, setPaginatedJobs] = useState([]);
 
@@ -20,8 +19,6 @@ const JobList = () => {
   // Load jobs into state when component mounts.
   useEffect(() => {
     setJobs(jobsSelector);
-
-    setJobsCount(jobsSelector.length);
 
     setPagesCount(Math.floor(jobsSelector.length / jobsPerPage));
   }, [jobsSelector]);
@@ -39,11 +36,7 @@ const JobList = () => {
 
     setPaginatedJobs(newJobList);
     setPagesCount(Math.floor(jobs.length / jobsPerPage));
-    setJobsCount(jobs.length);
   }, [currentPage, jobs]);
-
-  // Buttons to show
-  const buttonsArray = Array.from({ length: pagesCount }, (v, i) => i);
 
   return (
     <div className="joblist-wrapper">
@@ -62,6 +55,8 @@ const JobList = () => {
               />
             );
           }
+
+          return null;
         })}
       </div>
 

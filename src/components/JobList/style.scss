@@ -5,10 +5,11 @@
     text-align: right;
     margin-top: 32px;
 
-    i {
+    #dots {
       font-size: $large-font-size;
       color: $gray-light;
       padding: 0 14px;
+      margin-left: 12px;
     }
 
     button {
