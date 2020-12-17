@@ -1,0 +1,24 @@
+@import "../imports";
+
+.input-group {
+  position: relative;
+
+  input {
+    border: 0;
+    box-shadow: $shadow;
+    padding: 20px 40px;
+    width: 100%;
+    border-radius: $border-radius;
+    font-size: $small-font-size;
+    color: darken($gray-light, 10%);
+  }
+
+  i {
+    color: $gray-light;
+    font-size: $large-font-size;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    left: 22px;
+  }
+}
