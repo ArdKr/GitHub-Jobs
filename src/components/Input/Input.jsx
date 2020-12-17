@@ -2,7 +2,16 @@ import React from "react";
 
 import "./style.scss";
 
-const Input = ({ placeholder, icon, id = "default", onChange = null }) => {
+import Button from "../Button/Button";
+
+const Input = ({
+  placeholder,
+  icon,
+  id = "default",
+  onChange = null,
+  buttonText,
+  extraButtonClass = "",
+}) => {
   const Icon = () => {
     if (icon) {
       return (
@@ -10,6 +19,14 @@ const Input = ({ placeholder, icon, id = "default", onChange = null }) => {
           <i className={icon}></i>
         </React.Fragment>
       );
+    }
+
+    return null;
+  };
+
+  const ButtonComponent = () => {
+    if (buttonText) {
+      return <Button buttonText={buttonText} extraClass={extraButtonClass} />;
     }
 
     return null;
@@ -25,6 +42,8 @@ const Input = ({ placeholder, icon, id = "default", onChange = null }) => {
       />
 
       <Icon />
+
+      <ButtonComponent />
     </div>
   );
 };

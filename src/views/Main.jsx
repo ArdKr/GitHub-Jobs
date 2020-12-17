@@ -9,6 +9,8 @@ const Main = () => {
       <Input
         placeholder="Title, companies, expertise or benefits"
         icon="fas fa-briefcase"
+        buttonText="Search"
+        extraButtonClass="input-button"
       />
       <JobList />
     </div>

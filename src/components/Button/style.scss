@@ -1,0 +1,28 @@
+@import "../imports";
+
+.button {
+  border: 0;
+  border-radius: $border-radius;
+  font-size: $medium-font-size;
+  color: $white;
+  background-color: $primary;
+  padding: 13px 27px;
+  transition: all 0.1s ease;
+  cursor: pointer;
+  font-weight: $medium-weight;
+
+  @include medium-device {
+    padding: 13px 48px;
+  }
+
+  &:hover {
+    background-color: darken($primary, 15%);
+  }
+
+  &.input-button {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+  }
+}
