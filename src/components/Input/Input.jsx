@@ -11,6 +11,7 @@ const Input = ({
   onChange = null,
   buttonText,
   extraButtonClass = "",
+  onButtonClick = null,
 }) => {
   const Icon = () => {
     if (icon) {
@@ -26,7 +27,13 @@ const Input = ({
 
   const ButtonComponent = () => {
     if (buttonText) {
-      return <Button buttonText={buttonText} extraClass={extraButtonClass} />;
+      return (
+        <Button
+          buttonText={buttonText}
+          extraClass={extraButtonClass}
+          onClick={onButtonClick}
+        />
+      );
     }
 
     return null;

@@ -12,11 +12,14 @@ const initialState = jobsAdapter.getInitialState({
   error: null,
 });
 
-export const fetchJobs = createAsyncThunk("jobs/fetchJobs", async () => {
-  const response = await getJobs();
+export const fetchJobs = createAsyncThunk(
+  "jobs/fetchJobs",
+  async (params = {}, thunkAPI) => {
+    const response = await getJobs(params);
 
-  return response;
-});
+    return response;
+  }
+);
 
 // Create a redux slice for jobs
 const jobsSlice = createSlice({
@@ -27,7 +30,8 @@ const jobsSlice = createSlice({
   },
   extraReducers: {
     [fetchJobs.fulfilled]: (state, action) => {
-      jobsAdapter.upsertMany(state, action.payload);
+      jobsAdapter.setAll(state, action.payload);
+      // jobsAdapter.upsertMany(state, action.payload);
       state.status = "finished";
     },
     [fetchJobs.pending]: (state) => {

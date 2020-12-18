@@ -1,5 +1,11 @@
 @import "../imports";
 
+.no-result {
+  color: $primary;
+  text-align: center;
+  margin-top: 50px;
+}
+
 .rejected {
   background: $primary;
   color: $white;

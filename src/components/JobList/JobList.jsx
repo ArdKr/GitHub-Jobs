@@ -49,6 +49,10 @@ const JobList = () => {
     return <Rejected />;
   }
 
+  if (jobs.length === 0) {
+    return <h1 className="no-result">No results</h1>;
+  }
+
   return (
     <div className="joblist-wrapper">
       <div>

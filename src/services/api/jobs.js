@@ -29,8 +29,8 @@ const request = (url = "", params = {}) => {
  * @param {string} url
  * @param {object} params
  */
-export const getJobs = async (url = "", params = {}) => {
-  const requestPromise = await request(url, params)
+export const getJobs = async (params = {}) => {
+  const requestPromise = await request("", params)
     .then((response) => {
       if (response.statusText === "OK") {
         return response.data;
