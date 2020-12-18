@@ -5,7 +5,7 @@ const Pagination = ({ pagesCount, setCurrentPage, currentPage }) => {
 
   // Return page numbers that have to be displayed
   const buttons = () => {
-    const buttonArray = [];
+    let buttonArray = [];
 
     // Push the current page into the array
     buttonArray.push(currentPage);
@@ -32,6 +32,10 @@ const Pagination = ({ pagesCount, setCurrentPage, currentPage }) => {
       buttonArray.push(pagesCount);
     }
 
+    buttonArray = buttonArray.filter((element) => {
+      return element !== 0;
+    });
+
     return buttonArray;
   };
 
@@ -41,7 +45,7 @@ const Pagination = ({ pagesCount, setCurrentPage, currentPage }) => {
         onClick={(e) => {
           setCurrentPage(currentPage - 1);
         }}
-        disabled={currentPage === 1 && "disabled"}
+        disabled={currentPage < 2 && "disabled"}
       >
         <i className="fas fa-chevron-left"></i>
       </button>
@@ -70,7 +74,10 @@ const Pagination = ({ pagesCount, setCurrentPage, currentPage }) => {
         onClick={(e) => {
           setCurrentPage(currentPage + 1);
         }}
-        disabled={currentPage === pagesCount && "disabled"}
+        disabled={
+          (currentPage === pagesCount && "disabled") ||
+          (currentPage + 1 > pagesCount && "disabled")
+        }
       >
         <i className="fas fa-chevron-right"></i>
       </button>
