@@ -1,0 +1,23 @@
+@import "../components/imports";
+
+.input-wrapper {
+  height: 138px;
+  width: 100%;
+  border-radius: $large-border-radius;
+  margin-top: 30px;
+  background-image: url("../assets/images/backgroundImg.png");
+  padding: 41px 10px;
+  position: relative;
+
+  @include small-device {
+    padding: 41px 20px;
+  }
+
+  @include medium-device {
+    padding: 41px 50px;
+  }
+
+  @include large-device {
+    padding: 41px 200px;
+  }
+}

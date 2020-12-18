@@ -4,11 +4,12 @@ import React from "react";
 import "./index.scss";
 
 import Main from "./views/Main";
+import Logo from "./components/Logo/Logo";
 
 const App = () => {
   return (
     <div className="container">
-      <h1>App</h1>
+      <Logo />
       <Main />
     </div>
   );
