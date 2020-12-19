@@ -29,6 +29,16 @@
 }
 
 .joblist-wrapper {
+  display: block;
+
+  .wrapper:first-child {
+    margin-top: 0;
+
+    @include large-device {
+      margin-top: 30px;
+    }
+  }
+
   .pagination-buttons {
     text-align: right;
     margin-top: 32px;

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import JobList from "../components/JobList/JobList";
 import Input from "../components/Input/Input";
+import Filter from "../components/Filter/Filter";
 
 import { store } from "../services/redux/store";
 
@@ -32,7 +33,10 @@ const Main = () => {
         />
       </div>
 
-      <JobList />
+      <div className="main-wrapper">
+        <Filter />
+        <JobList />
+      </div>
     </div>
   );
 };

@@ -21,3 +21,19 @@
     padding: 41px 200px;
   }
 }
+
+.main-wrapper {
+  display: grid;
+  grid-template-columns: auto;
+  // grid-template-columns: minmax(100px, 380px) minmax(500px, 790px);
+
+  @include large-device {
+    grid-gap: 30px;
+    grid-template-columns: minmax(100px,270px) auto;
+  }
+
+  @include extra-large-device {
+    grid-gap: 30px;
+    grid-template-columns: minmax(100px,380px) auto;
+  }
+}
