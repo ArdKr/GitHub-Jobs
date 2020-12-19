@@ -55,9 +55,9 @@
       background-color: transparent;
       border: 1px solid #b7bcce;
       border-radius: $border-radius;
-      line-height: 36px;
-      padding: 0 14px;
-      margin-left: 12px;
+      line-height: 30px;
+      padding: 0 10px;
+      margin-left: 8px;
       color: $gray-light;
       transition: all 0.1s;
       cursor: pointer;
@@ -67,6 +67,12 @@
         background: $primary;
         border: 1px solid $primary;
         color: $white;
+      }
+
+      @include medium-device {
+        line-height: 36px;
+        padding: 0 14px;
+        margin-left: 12px;
       }
     }
   }

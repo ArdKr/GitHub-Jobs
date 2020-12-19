@@ -3,5 +3,92 @@
 .filter-wrapper {
   width: 100%;
   padding: 42px 0;
-  
+
+  #location-input {
+    padding: 17px 45px;
+  }
+
+  #location-label {
+    text-transform: uppercase;
+    color: $gray-light;
+    font-size: $font-size;
+    padding: 15px 0;
+    user-select: none;
+  }
+
+  .checkbox {
+    #job-type {
+      display: none;
+    }
+
+    #label {
+      font-size: $font-size;
+      color: $dark-blue;
+      font-weight: $medium-weight;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      user-select: none;
+      margin-bottom: 15px;
+    }
+
+    #label::before {
+      content: " ";
+      display: block;
+      height: 18px;
+      width: 18px;
+      background: transparent;
+      border: 1px solid $gray-light;
+      border-radius: $small-border-radius;
+      font-size: $font-size;
+      text-align: center;
+      color: $primary;
+      float: left;
+      margin-right: 12px;
+    }
+
+    #job-type:checked + #label::before {
+      border: 1px solid $primary;
+      content: "\2713";
+    }
+  }
+
+  .choices {
+    margin-top: 25px;
+    .choice {
+      input[type="radio"] {
+        display: none;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+        margin-bottom: 18px;
+        font-size: $font-size;
+        color: $dark-blue;
+        font-weight: $medium-weight;
+        cursor: pointer;
+        position: relative;
+      }
+
+      input[type="radio"]:checked + label::before {
+        background: $white;
+        border: 5px solid $primary;
+        height: 10px;
+        width: 10px;
+      }
+
+
+      label::before {
+        content: " ";
+        background: transparent;
+        height: 18px;
+        width: 18px;
+        display: block;
+        border: 1px solid $gray-light;
+        border-radius: 10px;
+        margin-right: 12.5px;
+      }
+    }
+  }
 }
