@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./style.scss";
 
 import Input from "../Input/Input";
+import Choice from "./Choice";
 
 import { useSelector } from "react-redux";
 import { selectAllJobs } from "../../services/redux/slices/jobs/jobsSlice";
@@ -93,49 +94,21 @@ const Filter = ({
         onChange={onLocationUpdate}
       />
       <div className="choices">
-        <div className="choice">
-          <input
-            type="radio"
-            name="location"
-            onChange={onLocationUpdate}
-            id="london"
-            value="london"
-          />
-          <label htmlFor="london">London</label>
-        </div>
-
-        <div className="choice">
-          <input
-            type="radio"
-            name="location"
-            id="amsterdam"
-            value="amsterdam"
-            onChange={onLocationUpdate}
-          />
-          <label htmlFor="amsterdam">Amsterdam</label>
-        </div>
-
-        <div className="choice">
-          <input
-            type="radio"
-            name="location"
-            onChange={onLocationUpdate}
-            id="newyork"
-            value="new york"
-          />
-          <label htmlFor="newyork">New York</label>
-        </div>
-
-        <div className="choice">
-          <input
-            type="radio"
-            name="location"
-            onChange={onLocationUpdate}
-            id="berlin"
-            value="berlin"
-          />
-          <label htmlFor="berlin">Berlin</label>
-        </div>
+        {[
+          { value: "london", label: "London" },
+          { value: "amsterdam", label: "Amsterdam" },
+          { value: "newyork", label: "New York" },
+          { value: "berlin", label: "Berlin" },
+        ].map((choice) => {
+          return (
+            <Choice
+              key={choice.value}
+              value={choice.value}
+              label={choice.label}
+              onLocationUpdate={onLocationUpdate}
+            />
+          );
+        })}
       </div>
     </div>
   );
