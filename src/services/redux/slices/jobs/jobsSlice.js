@@ -26,7 +26,9 @@ const jobsSlice = createSlice({
   name: "jobs",
   initialState,
   reducers: {
-    //
+    updateJobs: (state, action) => {
+      jobsAdapter.setAll(state, action.payload);
+    },
   },
   extraReducers: {
     [fetchJobs.fulfilled]: (state, action) => {
@@ -47,5 +49,7 @@ const jobsSlice = createSlice({
 export const { selectAll: selectAllJobs } = jobsAdapter.getSelectors(
   (state) => state.jobs
 );
+
+export const { updateJobs } = jobsSlice.actions;
 
 export default jobsSlice.reducer;

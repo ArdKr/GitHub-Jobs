@@ -9,12 +9,17 @@ import Rejected from "./Rejected";
 import { useSelector } from "react-redux";
 import { selectAllJobs } from "../../services/redux/slices/jobs/jobsSlice";
 
-const JobList = () => {
-  const jobsPerPage = 5;
+import { paginate } from "../../paginator";
+
+const JobList = ({
+  paginatedJobs,
+  setPaginatedJobs,
+  displayPaginationNumbers,
+}) => {
+  // const jobsPerPage = 5;
   const [currentPage, setCurrentPage] = useState("1");
   const [pagesCount, setPagesCount] = useState(0);
   const [jobs, setJobs] = useState([]);
-  const [paginatedJobs, setPaginatedJobs] = useState([]);
 
   const jobsSelector = useSelector(selectAllJobs);
   const requestStatus = useSelector((state) => state.jobs.status);
@@ -23,23 +28,16 @@ const JobList = () => {
   useEffect(() => {
     setJobs(jobsSelector);
 
-    setPagesCount(Math.floor(jobsSelector.length / jobsPerPage));
+    // setPagesCount(Math.floor(jobsSelector.length / jobsPerPage));
   }, [jobsSelector]);
 
   // Handle what jobs are displayed
   useEffect(() => {
-    const newJobList = [];
+    const { items: paginatedJobs, pages } = paginate(jobs, currentPage);
 
-    const endCount = currentPage * jobsPerPage - 1;
-    const startCount = endCount - (jobsPerPage - 1);
-
-    for (let i = startCount; i <= endCount; i++) {
-      newJobList.push(jobs[i]);
-    }
-
-    setPaginatedJobs(newJobList);
-    setPagesCount(Math.floor(jobs.length / jobsPerPage));
-  }, [currentPage, jobs]);
+    setPaginatedJobs(paginatedJobs);
+    setPagesCount(pages);
+  }, [currentPage, jobs, setPaginatedJobs]);
 
   if (requestStatus === "loading") {
     return <Loading />;
@@ -49,9 +47,23 @@ const JobList = () => {
     return <Rejected />;
   }
 
-  if (jobs.length === 0) {
+  if (paginatedJobs.length === 0) {
     return <h1 className="no-result">No results</h1>;
   }
+
+  const PaginationButtons = () => {
+    if (displayPaginationNumbers) {
+      return (
+        <Pagination
+          pagesCount={pagesCount}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
+      );
+    }
+
+    return null;
+  };
 
   return (
     <div className="joblist-wrapper">
@@ -75,11 +87,7 @@ const JobList = () => {
         })}
       </div>
 
-      <Pagination
-        pagesCount={pagesCount}
-        setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
-      />
+      <PaginationButtons />
     </div>
   );
 };

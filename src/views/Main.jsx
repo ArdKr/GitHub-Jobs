@@ -12,9 +12,16 @@ import "./main.scss";
 
 const Main = () => {
   const [description, setDescription] = useState("");
+  const [paginatedJobs, setPaginatedJobs] = useState([]);
+  const [displayPaginationNumbers, setDisplayPaginationNumbers] = useState(
+    true
+  );
+  const [location, setLocation] = useState("");
 
   const searchData = () => {
     store.dispatch(fetchJobs({ description }));
+    setDisplayPaginationNumbers(true);
+    setLocation("null");
   };
 
   return (
@@ -34,8 +41,17 @@ const Main = () => {
       </div>
 
       <div className="main-wrapper">
-        <Filter />
-        <JobList />
+        <Filter
+          setPaginatedJobs={setPaginatedJobs}
+          setDisplayPaginationNumbers={setDisplayPaginationNumbers}
+          location={location}
+          setLocation={setLocation}
+        />
+        <JobList
+          paginatedJobs={paginatedJobs}
+          setPaginatedJobs={setPaginatedJobs}
+          displayPaginationNumbers={displayPaginationNumbers}
+        />
       </div>
     </div>
   );
