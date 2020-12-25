@@ -47,7 +47,7 @@ const JobList = ({
     return <Rejected />;
   }
 
-  if (paginatedJobs.length === 0) {
+  if (paginatedJobs.length === 0 || jobs.length === 0) {
     return <h1 className="no-result">No results</h1>;
   }
 

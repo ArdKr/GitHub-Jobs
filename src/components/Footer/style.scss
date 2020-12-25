@@ -1,0 +1,13 @@
+@import "../imports";
+
+.footer {
+  padding: 85px;
+  width: 100%;
+  text-align: center;
+  a {
+    font-size: $font-size;
+    text-decoration: none;
+    color: $gray-light;
+    font-weight: $medium-weight;
+  }
+}
