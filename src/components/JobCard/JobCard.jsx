@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./style.scss";
 
 const JobCard = ({
@@ -8,6 +9,7 @@ const JobCard = ({
   type,
   location,
   created_at,
+  id,
 }) => {
   created_at = created_at.split(" ");
 
@@ -21,7 +23,9 @@ const JobCard = ({
         </div>
         <div className="position-details">
           <h5>{company}</h5>
-          <h2>{title}</h2>
+          <Link to={"/" + id}>
+            <h2>{title}</h2>
+          </Link>
 
           <button>{type}</button>
         </div>

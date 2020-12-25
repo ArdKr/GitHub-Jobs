@@ -79,6 +79,7 @@ const JobList = ({
                 location={job.location}
                 created_at={job.created_at}
                 key={job.id}
+                id={job.id}
               />
             );
           }
