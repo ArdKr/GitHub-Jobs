@@ -46,9 +46,10 @@ const jobsSlice = createSlice({
   },
 });
 
-export const { selectAll: selectAllJobs } = jobsAdapter.getSelectors(
-  (state) => state.jobs
-);
+export const {
+  selectAll: selectAllJobs,
+  selectById: selectJobById,
+} = jobsAdapter.getSelectors((state) => state.jobs);
 
 export const { updateJobs } = jobsSlice.actions;
 

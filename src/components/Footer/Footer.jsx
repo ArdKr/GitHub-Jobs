@@ -4,7 +4,7 @@ import "./style.scss";
 
 const Footer = () => {
   return (
-    <div class="footer">
+    <div className="footer">
       <a href="https://github.com/ArdKr">ArdKr @ DevChallenges.io</a>
     </div>
   );

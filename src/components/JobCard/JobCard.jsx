@@ -27,7 +27,7 @@ const JobCard = ({
             <h2>{title}</h2>
           </Link>
 
-          <button>{type}</button>
+          <button className="transparent-button">{type}</button>
         </div>
       </div>
 
